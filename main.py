@@ -16,7 +16,7 @@ class MyPlugin(Star):
         new_chain = []
         for message in result.chain:
             if isinstance(message, Plain):
-                message.text = re.sub(r'https?://[^\s]+', '[被屏蔽的链接]', message.text)
+                message.text = re.sub(r'https?://[^\s\u4e00-\u9fa5\p{P}()]]+', '[被屏蔽的链接]', message.text)
                 message.text = message.text.replace('.', ' . ')
                 new_chain.append(message)
             else:
